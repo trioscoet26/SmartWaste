@@ -342,32 +342,7 @@ className="h-96 w-full bg-gray-50 dark:bg-neutral-900 relative overflow-hidden z
             />
             {/* Camera Controls */}
             <div className="grid grid-cols-1 gap-4 w-full">
-            {/* <button
-        id="open-camera-btn"
-        className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-105"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 mr-2"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-        Open Camera
-      </button> */}
+           
       <OpenCameraButton />
       
       <OpenImageVideo />
@@ -391,61 +366,7 @@ className="h-96 w-full bg-gray-50 dark:bg-neutral-900 relative overflow-hidden z
           />
         </svg>
         Take Photo
-      </button>
-
-
-      {/* Upload File Button */}
-      {/* <label className="cursor-pointer bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-105">
-        <input
-          type="file"
-          accept=".png,.jpeg,.jpg,.mp4"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-    <svg
-  xmlns="http://www.w3.org/2000/svg"
-  className="h-5 w-5 mr-2"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    d="M5 10l7-7m0 0l7 7m-7-7v14"
-  />
-</svg>
-
-        Upload Image or Video (*.png/.jpeg/.jpg/.mp4)
-      </label>
-
-      {file && (
-        <p className="text-white text-sm mt-2">
-          Selected file: <strong>{file.name}</strong>
-        </p>
-      )} */}
-              {/* <button
-                id="detect-garbage-btn"
-                className=" bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-105"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                  />
-                </svg>
-                Detect &amp; Map
-              </button> */}
-              
+      </button>     
             </div>
             {/* Status Messages */}
             <div
@@ -518,76 +439,3 @@ className="h-96 w-full bg-gray-50 dark:bg-neutral-900 relative overflow-hidden z
     </div>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useEffect } from "react";
-// import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-// import "leaflet/dist/leaflet.css";
-// import L from "leaflet";
-
-// // Custom Red Marker Icon
-// const redIcon = new L.Icon({
-//   iconUrl: "https://cdn-icons-png.flaticon.com/512/1673/1673221.png",
-//   iconSize: [40, 40],
-//   iconAnchor: [20, 40],
-//   popupAnchor: [0, -35],
-// });
-
-// // Garbage dump locations in Amravati
-// const garbageLocations = [
-//   { id: 1, lat: 20.9374, lng: 77.7796, description: "Overflowing bins near Rajapeth" },
-//   { id: 2, lat: 20.9245, lng: 77.7550, description: "Illegal dumping at Badnera Road" },
-//   { id: 3, lat: 20.9270, lng: 77.7778, description: "Waste pileup near Maltekdi" },
-//   { id: 4, lat: 20.9321, lng: 77.7633, description: "Garbage accumulation near Gadge Nagar" },
-//   { id: 5, lat: 20.9423, lng: 77.7725, description: "Unattended waste near Rathi Nagar" },
-// ];
-
-// const OpenAllPopups = () => {
-//   const map = useMap();
-
-//   useEffect(() => {
-//     garbageLocations.forEach((garbage) => {
-//       const marker = L.marker([garbage.lat, garbage.lng], { icon: redIcon }).addTo(map);
-//       const popup = L.popup({ autoClose: false, closeOnClick: false })
-//         .setLatLng([garbage.lat, garbage.lng])
-//         .setContent(`<span style="font-weight: bold;">🗑️ ${garbage.description}</span>`);
-//       marker.bindPopup(popup).openPopup();
-//     });
-//   }, [map]);
-
-//   return null;
-// };
-
-// export default function MapComponent() {
-//   return (
-//     <div className="flex justify-center items-center h-screen">
-//       <MapContainer center={[20.9374, 77.7796]} zoom={13} style={{ height: "90vh", width: "90vw" }}>
-//         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-//         <OpenAllPopups />
-//       </MapContainer>
-//     </div>
-//   );
-// }

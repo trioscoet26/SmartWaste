@@ -6,13 +6,14 @@ from pymongo import MongoClient
 from datetime import datetime
 import geocoder
 import math
+from datetime import datetime
 
 
 
 # MongoDB connection
 client = MongoClient('mongodb+srv://root:root@cluster0.ik1za.mongodb.net/')
 db = client['SmartWaste']
-collection = db['detections']
+collection = db['tasks']
 
 # Load YOLOv8 model
 model = YOLO("best.pt")  # Use your trained model
@@ -41,25 +42,23 @@ def calculate_severity(x1, y1, x2, y2, frame_height, frame_width):
 
 def calculate_priority(class_name, severity):
     """Calculate priority based on class type and severity"""
-    # Base priority for different classes
+    # Class priority mapping
     class_priority = {
-        "spills": 1,  # Highest priority
-        "garbage": 3,  # Lower priority
-        "trash": 3,    # Lower priority
+        "spills": "High",  # Highest priority
+        "garbage": "Medium",  # Medium priority
+        "trash": "Low",    # Lower priority
     }
     
-    # Severity multiplier
-    severity_multiplier = {
-        "High": 1,
-        "Medium": 2,
-        "Low": 3
-    }
+    # Get base priority for the class (default to "Low" if class not found)
+    base_priority = class_priority.get(class_name.lower(), "Low")
     
-    # Get base priority for the class (default to 3 if class not found)
-    base_priority = class_priority.get(class_name.lower(), 3)
+    # For simplicity, use the higher of class priority or severity
+    priority_levels = {"High": 3, "Medium": 2, "Low": 1}
     
-    # Adjust priority based on severity
-    return base_priority * severity_multiplier[severity]
+    if priority_levels.get(severity, 1) > priority_levels.get(base_priority, 1):
+        return severity
+    else:
+        return base_priority
 
 def get_gps_coordinates():
     """Get current GPS coordinates of the laptop"""
@@ -94,33 +93,43 @@ def log_detection(class_name, x1, y1, x2, y2, frame, score):
         # Calculate priority based on class and severity
         priority = calculate_priority(class_name, severity)
         
+        # Calculate size (area in pixels)
+        detection_size = (x2 - x1) * (y2 - y1)
+        
         # Get GPS coordinates
         latitude, longitude = get_gps_coordinates()
 
         # Store in MongoDB
         detection_data = {
-            "timestamp": datetime.now(),
-            "class": class_name,
-            "confidence_score": score,
-            "severity": severity,
-            "priority": priority,
+            "size": detection_size,  # Required field
+            "department": "cleaning" if class_name.lower() != "spills" else "spill",
+            "severity": severity,  # "High", "Medium", or "Low"
+            "priority": priority,  # "High", "Medium", or "Low" 
+            "location": f"CAM1-{center_x:.0f}-{center_y:.0f}",  # String location
             "latitude": latitude,
             "longitude": longitude,
-            "assigned": False,  # default value
-            "completed": False,  # default value
-            "image_path": filename,
-            "location": {
+            "assigned": False,
+            "assignedWorker": None,
+            "processing": False,
+            "status": "Incomplete",
+            "description": f"Detected {class_name} with {score:.2f} confidence.",
+            "imagePath": filename,
+            "locationDetails": {  # Store detailed location as a separate field
                 "x": center_x,
                 "y": center_y,
                 "width": x2 - x1,
                 "height": y2 - y1,
-                "coverage_percentage": ((x2 - x1) * (y2 - y1) / (frame_height * frame_width)) * 100
-            }
+                "coveragePercentage": ((x2 - x1) * (y2 - y1) / (frame_height * frame_width)) * 100
+            },
+            "confidenceScore": score,
+            "createdAt": datetime.now()
         }
         
-        collection.insert_one(detection_data)
-        print(f"✅ Detection data stored in MongoDB")
-
+        # Insert into MongoDB
+        insert_result = collection.insert_one(detection_data)
+        print(f"✅ Detection data stored in MongoDB with ID: {insert_result.inserted_id}")
+        
+       
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:

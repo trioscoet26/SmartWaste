@@ -11,7 +11,7 @@ const taskSchema = new mongoose.Schema({
   assignedWorker: { type: mongoose.Schema.Types.ObjectId, ref: 'Worker' }, // Reference to the assigned worker
   processing: { type: Boolean, default: false }, // Flag to indicate if task is currently being processed
   status: { type: String, enum: ['In Progress', 'Completed', 'Incomplete'], default: 'Incomplete' }, // Status of the task
-  description: { type: String, required: true }, // Description of the task
+  description: { type: String }, // Description of the task
   createdAt: { type: Date, default: Date.now }, // Date when the task was created (important for shift matching)
 }, { timestamps: true });
 

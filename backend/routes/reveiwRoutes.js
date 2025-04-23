@@ -1,7 +1,7 @@
-// routes/reviewRoutes.js
-const express = require('express');
+import express from 'express';
+import { submitReview } from '../controllers/reveiwController.js';
+
 const router = express.Router();
-const { submitReview } = require('../controllers/reviewController');
 
 router.post('/submitReview', submitReview);
 

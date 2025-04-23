@@ -1,13 +1,15 @@
-const Sentiment = require('sentiment');
-const { produceReview } = require('../services/fluvioProducer');
+import Sentiment from 'sentiment';
+// import {produceReview} from '../services/fluvioProducer.js';
 
 const sentiment = new Sentiment();
 
-exports.submitReview = async (req, res) => {
+export const submitReview = async (req, res) => {
   try {
     const { review } = req.body;
 
-    if (!review) return res.status(400).json({ error: 'Review is required' });
+    if (!review) {
+      return res.status(400).json({ error: 'Review is required' });
+    }
 
     // Analyze sentiment
     const result = sentiment.analyze(review);

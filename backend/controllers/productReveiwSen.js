@@ -1,20 +1,21 @@
-const Sentiment = require("sentiment");
+import Sentiment from 'sentiment';
+
 const sentiment = new Sentiment();
 
-exports.analyzeReview = (req, res) => {
+export const analyzeReview = (req, res) => {
   const { review } = req.body;
 
   if (!review) {
-    return res.status(400).json({ error: "Review text is required." });
+    return res.status(400).json({ error: 'Review text is required.' });
   }
 
   const result = sentiment.analyze(review);
-  let sentimentLabel = "Neutral";
+  let sentimentLabel = 'Neutral';
 
   if (result.score > 0) {
-    sentimentLabel = "Positive";
+    sentimentLabel = 'Positive';
   } else if (result.score < 0) {
-    sentimentLabel = "Negative";
+    sentimentLabel = 'Negative';
   }
 
   res.json({
@@ -23,6 +24,6 @@ exports.analyzeReview = (req, res) => {
     score: result.score,
     words: result.words,
     positive: result.positive,
-    negative: result.negative
+    negative: result.negative,
   });
 };

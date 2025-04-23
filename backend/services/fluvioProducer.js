@@ -1,4 +1,4 @@
-const { Fluvio } = require('@fluvio/client');
+import  Fluvio  from '@fluvio/client';
 
 let fluvio;
 
@@ -9,10 +9,8 @@ async function getFluvioClient() {
   return fluvio;
 }
 
-async function produceReview(message) {
+export async function produceReview(message) {
   const fluvio = await getFluvioClient();
   const producer = await fluvio.topicProducer('reviews');
   await producer.send(null, Buffer.from(message));
 }
-
-module.exports = { produceReview };

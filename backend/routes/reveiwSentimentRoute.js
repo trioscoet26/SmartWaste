@@ -1,8 +1,8 @@
-// routes/reviewSentimentRoute.js
-const express = require("express");
-const router = express.Router();
-const { analyzeReview } = require("../controllers/productReviewSen");
+import express from 'express';
+import { analyzeReview } from '../controllers/productReveiwSen.js';
 
-router.post("/analyze-review", analyzeReview);
+const router = express.Router();
+
+router.post('/analyze-review', analyzeReview);
 
 export default router;

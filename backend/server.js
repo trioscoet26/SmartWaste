@@ -11,7 +11,8 @@ import allUserRoutes from "./routes/allUserRoutes.js";
 import payment from "./routes/payment.js";
 import locationRoutes from "./routes/locationRoutes.js";
 import workerRoutes from "./routes/workerRoutes.js";
-
+import reviewRoutes from "./routes/reveiwRoutes.js";
+import reveiwSentimentRoute from "./routes/reveiwSentimentRoute.js"
 // Load environment variables
 dotenv.config();
 
@@ -43,6 +44,8 @@ app.use("/api/payment", payment);
 app.use("/api/location", locationRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/worker", workerRoutes);
+app.use('/api', reviewRoutes);
+app.use('/api',reveiwSentimentRoute);
 
 // Basic health check route
 app.get("/", (req, res) => {

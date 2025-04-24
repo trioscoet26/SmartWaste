@@ -325,8 +325,8 @@ const ReviewDashboard = () => {
       {/* Dashboard Container */}
       <div className="flex flex-col md:flex-row gap-6">
         {/* Left Panel - Review Form */}
-        <div className="w-full md:w-1/2">
-          <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+        <div className="w-full md:w-1/2 ">
+          <div className="bg-white dark:bg-neutral-700 rounded-lg overflow-hidden shadow-md bg-neutral-600">
             <div className="p-6">
               <div className="flex justify-between items-center">
                 <div>
@@ -334,21 +334,21 @@ const ReviewDashboard = () => {
                   <p className="text-gray-600 dark:text-gray-400">Tell us about your experience with our eco-friendly marketplace</p>
                 </div>
                 <div className="inline-flex items-center gap-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-300 bg-opacity-50 px-3 py-1 rounded-full text-sm">
-  <span>Give Review</span>
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.48 0-2.874-.32-4.083-.89L3 21l1.417-3.43C3.495 15.946 3 14.035 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-  </svg>
-</div>
+                  <span>Give Review</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.48 0-2.874-.32-4.083-.89L3 21l1.417-3.43C3.495 15.946 3 14.035 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
 
 
               </div>
             </div>
 
             {/* Review Form */}
-            <div className="bg-gray-50 dark:bg-gray-900 p-6">
+            <div className="bg-gray-50 dark:bg-neutral-800 p-6">
               {!isLoaded || !isSignedIn ? (
                 <div className="text-center py-4">
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  <p className="text-neutral-600 dark:text-gray-300 mb-4">
                     Please sign in to submit a review
                   </p>
                   <button 
@@ -360,7 +360,7 @@ const ReviewDashboard = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-4">
+                  <div className="mb-4 ">
                     <label 
                       htmlFor="rating" 
                       className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
@@ -391,14 +391,14 @@ const ReviewDashboard = () => {
                   <div className="mb-4">
                     <label 
                       htmlFor="review" 
-                      className="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
+                      className="block text-neutral-700 dark:text-neutral-300 mb-2 font-medium"
                     >
                       Your Review
                     </label>
                     <textarea 
                       id="review"
                       rows="4"
-                      className="w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      className="w-full px-3 py-2 bg-white dark:bg-neutral-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
                       placeholder="Share your experience with our eco-friendly marketplace..."
                       value={review}
                       onChange={(e) => setReview(e.target.value)}
@@ -422,7 +422,7 @@ const ReviewDashboard = () => {
             </div>
 
             {/* Review Stats */}
-            <div className="bg-gray-50 dark:bg-gray-900 p-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="bg-gray-50 dark:bg-neutral-800 p-6 border-t border-gray-200 dark:border-gray-700">
               <div className="flex justify-between mb-6">
                 <div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Total Reviews</p>
@@ -447,8 +447,8 @@ const ReviewDashboard = () => {
         </div>
 
         {/* Right Panel - Sentiment Analysis */}
-        <div className="w-full md:w-1/2">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md mb-6">
+        <div className="w-full md:w-1/2 ">
+          <div className="bg-white dark:bg-neutral-800 rounded-lg p-6 shadow-md mb-6 bg-neutral-600">
             <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
               Sentiment Analysis Insights
             </h2>
@@ -462,7 +462,7 @@ const ReviewDashboard = () => {
                 {error}
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="space-y-6 ">
                 {/* Sentiment Analysis Visualization */}
                 {sentimentData && (
                   <div className="mb-6">
@@ -610,7 +610,7 @@ const ReviewDashboard = () => {
 
 {/* Reviews List - Results Section */}
 <div className="mt-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <div className="bg-white dark:bg-neutral-800 rounded-lg shadow-md p-6">
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">
             Recent Reviews
           </h3>
@@ -638,7 +638,7 @@ const ReviewDashboard = () => {
     .map((review) => (
       <div 
         key={review._id} 
-        className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg"
+        className="bg-gray-50 dark:bg-neutral-700 p-4 rounded-lg"
       >
         <div className="flex justify-between items-start mb-2">
           <div className="flex items-center">

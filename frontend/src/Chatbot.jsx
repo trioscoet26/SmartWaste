@@ -28,7 +28,7 @@ const Chatbot = () => {
                     "Authorization": `Bearer ${API_KEY}`
                 },
                 body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
+                    model: "meta-llama/llama-4-maverick-17b-128e-instruct",
                     messages: [
                         {
                             role: "user",

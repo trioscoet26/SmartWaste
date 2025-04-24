@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { Groq } from "groq-sdk";
 
 const OpenImageVideo = () => {
   const API_URL = import.meta.env.VITE_FLASK_API_URL; // Get Flask API URL from .env
   const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY; // Get Groq API key from .env
-  const GROQ_API_URL = "https://api.groq.com/openai/v1"; // Groq API endpoint
+  
+  // Initialize Groq client
+  const groq = new Groq({
+    apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true,
+  });
   
   const [loading, setLoading] = useState(false);
   const [analyzing, setAnalyzing] = useState(false);
@@ -149,64 +153,55 @@ const OpenImageVideo = () => {
     
     try {
       // Resize image before converting to base64
-      const resizedImageBase64 = await resizeAndConvertToBase64(imageFile, 800); // Max dimension 800px
+      const resizedImageBase64 = await resizeAndConvertToBase64(imageFile, 500); 
       
-      // Prepare Groq AI prompt - check if Groq supports vision models
-      // If vision model is supported:
+      // Try with vision-specific model first
       try {
-        // Try with vision-specific format first
-        const visionMessages = [
-          { 
-            role: "system", 
-            content: "You are a waste detection and classification AI assistant. Analyze images to identify waste and provide structured JSON responses." 
-          },
-          { 
-            role: "user", 
-            content: [
-              {
-                type: "text",
-                text: `Analyze this image and determine if it contains garbage/waste.
-                If waste is detected:
-                1. Identify the type of waste (plastic, paper, organic, metal, electronic, hazardous, mixed, etc.)
-                2. Provide a confidence score (0-100%)
-                3. Give a brief description of what you see
-                4. Suggest proper disposal method
-                
-                Return your analysis as JSON with the following structure:
+        // Using Groq SDK for vision model request
+        const visionResponse = await groq.chat.completions.create({
+          model: "meta-llama/llama-4-scout-17b-16e-instruct", // Use vision model
+          messages: [
+            { 
+              role: "system", 
+              content: "You are a waste detection and classification AI assistant. Analyze images to identify waste and provide structured JSON responses." 
+            },
+            { 
+              role: "user", 
+              content: [
                 {
-                  "isWaste": boolean,
-                  "wasteType": string or null,
-                  "confidence": number between 0-100 or null,
-                  "description": string,
-                  "disposalMethod": string or null
+                  type: "text",
+                  text: `Analyze this image and determine if it contains garbage/waste.
+                  If waste is detected:
+                  1. Identify the type of waste (plastic, paper, organic, metal, electronic, hazardous, mixed, etc.)
+                  2. Provide a confidence score (0-100%)
+                  3. Give a detailed description of what you see and Additional Details  
+                  4. Suggest proper disposal method in details 
+                  
+                  Return your analysis as JSON with the following structure:
+                  {
+                    "isWaste": boolean,
+                    "wasteType": string or null,
+                    "confidence": number between 0-100 or null,
+                    "description": string,
+                    "disposalMethod": string or null
+                  }
+                  
+                  If no waste is detected, set isWaste to false and provide a description of what you see.`
+                },
+                {
+                  type: "image_url",
+                  image_url: {
+                    url: `data:image/jpeg;base64,${resizedImageBase64}`
+                  }
                 }
-                
-                If no waste is detected, set isWaste to false and provide a description of what you see.`
-              },
-              {
-                type: "image_url",
-                image_url: {
-                  url: `data:image/jpeg;base64,${resizedImageBase64}`
-                }
-              }
-            ]
-          }
-        ];
-        
-        // Call Groq AI API with vision model
-        const response = await axios.post(`${GROQ_API_URL}/chat/completions`, {
-          model: "meta-llama/llama-4-scout-17b-16e-instruct", // Use vision model if available
-          messages: visionMessages,
+              ]
+            }
+          ],
           response_format: { type: "json_object" }
-        }, {
-          headers: {
-            'Authorization': `Bearer ${GROQ_API_KEY}`,
-            'Content-Type': 'application/json'
-          }
         });
         
         // Parse and store the waste analysis results
-        const result = JSON.parse(response.data.choices[0].message.content);
+        const result = JSON.parse(visionResponse.choices[0].message.content);
         setWasteAnalysis(result);
         
         // Update UI with results
@@ -221,8 +216,8 @@ const OpenImageVideo = () => {
           If waste is detected:
           1. Identify the type of waste (plastic, paper, organic, metal, electronic, hazardous, mixed, etc.)
           2. Provide a confidence score (0-100%)
-          3. Give a brief description of what you see
-          4. Suggest proper disposal method
+          3. Give a detailed description of what you see and Additional Details  
+          4. Suggest proper disposal method in details 
           
           Return your analysis as JSON with the following structure:
           {
@@ -238,8 +233,8 @@ const OpenImageVideo = () => {
           Image (base64): ${resizedImageBase64.substring(0, 100)}...
         `;
         
-        // Standard text-based API call
-        const response = await axios.post(`${GROQ_API_URL}/chat/completions`, {
+        // Using Groq SDK for text-based model request
+        const textResponse = await groq.chat.completions.create({
           model: "llama3-70b-8192", // Or another appropriate Groq model
           messages: [
             { 
@@ -252,15 +247,10 @@ const OpenImageVideo = () => {
             }
           ],
           response_format: { type: "json_object" }
-        }, {
-          headers: {
-            'Authorization': `Bearer ${GROQ_API_KEY}`,
-            'Content-Type': 'application/json'
-          }
         });
         
         // Parse and store the waste analysis results
-        const result = JSON.parse(response.data.choices[0].message.content);
+        const result = JSON.parse(textResponse.choices[0].message.content);
         setWasteAnalysis(result);
         
         // Update UI with results
@@ -281,7 +271,13 @@ const OpenImageVideo = () => {
             };
             
             // Store in database
-            await axios.post(`http://localhost:5000/api/waste/store-waste`, wasteData);
+            await fetch(`${API_URL}/api/waste/store-waste`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(wasteData)
+            });
             
             // Update status to show location was saved
             if (statusElement && wasteAnalysis.isWaste) {
@@ -313,25 +309,91 @@ const OpenImageVideo = () => {
   const updateUIWithResults = (result, statusElement) => {
     if (statusElement) {
       if (result.isWaste) {
+        // Enhanced UI for waste detection
         statusElement.innerHTML = `
-          <div class="text-left p-3 bg-green-50 dark:bg-green-900/30 rounded-lg">
-            <p class="font-medium mb-1">✅ Waste Detected (${result.confidence}% confidence)</p>
-            <p class="mb-1"><span class="font-medium">Type:</span> ${result.wasteType}</p>
-            <p class="mb-1"><span class="font-medium">Description:</span> ${result.description}</p>
-            <p><span class="font-medium">Disposal:</span> ${result.disposalMethod}</p>
+          <div class="text-left p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border-l-4 border-green-500 shadow-sm">
+            <div class="flex items-center mb-3">
+              <div class="bg-green-100 dark:bg-green-800 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-green-700 dark:text-green-300">Waste Detected</h4>
+                <div class="flex items-center mt-1">
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                    <div class="bg-green-600 h-2.5 rounded-full" style="width: ${result.confidence}%"></div>
+                  </div>
+                  <span class="ml-2 text-xs font-medium text-gray-700 dark:text-gray-300">${result.confidence}%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-2 pt-2 border-t border-green-200 dark:border-green-800">
+              <div>
+                <h5 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Type</h5>
+                <p class="font-medium text-gray-800 dark:text-gray-200 flex items-center">
+                  <span class="w-3 h-3 rounded-full ${getWasteTypeColor(result.wasteType)} mr-2"></span>
+                  ${result.wasteType}
+                </p>
+              </div>
+              
+              <div>
+                <h5 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Description</h5>
+                <p class="text-gray-700 dark:text-gray-300">${result.description}</p>
+              </div>
+              
+              <div>
+                <h5 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Recommended Disposal</h5>
+                <div class="flex items-start mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-1 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p class="text-gray-700 dark:text-gray-300">${result.disposalMethod}</p>
+                </div>
+              </div>
+            </div>
           </div>
         `;
-        statusElement.className = 'mt-4 w-full text-sm text-gray-700 dark:text-gray-200';
       } else {
+        // Enhanced UI for no waste detection
         statusElement.innerHTML = `
-          <div class="text-left p-3 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg">
-            <p class="font-medium mb-1">❓ No Waste Detected</p>
-            <p>${result.description}</p>
+          <div class="text-left p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border-l-4 border-yellow-500 shadow-sm">
+            <div class="flex items-center mb-3">
+              <div class="bg-yellow-100 dark:bg-yellow-800 p-2 rounded-full mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-600 dark:text-yellow-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h4 class="font-bold text-yellow-700 dark:text-yellow-300">No Waste Detected</h4>
+            </div>
+            
+            <div class="pt-2 border-t border-yellow-200 dark:border-yellow-800">
+              <p class="text-gray-700 dark:text-gray-300">${result.description}</p>
+            </div>
           </div>
         `;
-        statusElement.className = 'mt-4 w-full text-sm text-gray-700 dark:text-gray-200';
       }
+      
+      statusElement.className = 'mt-4 w-full text-sm';
     }
+  };
+
+  // Helper function to get background color based on waste type
+  const getWasteTypeColor = (wasteType) => {
+    const wasteColors = {
+      'Plastic': 'bg-yellow-500',
+      'Paper': 'bg-blue-500',
+      'Glass': 'bg-green-500',
+      'Metal': 'bg-yellow-500',
+      'Electronic': 'bg-purple-500',
+      'E-waste': 'bg-purple-500',
+      'Hazardous': 'bg-orange-500',
+      'Organic': 'bg-emerald-500',
+      'mixed': 'bg-yellow-500'
+    };
+    
+    return wasteColors[wasteType] || 'bg-gray-500';
   };
 
   return (
@@ -359,7 +421,7 @@ const OpenImageVideo = () => {
       </svg>
       {loading ? "Uploading..." : 
        analyzing ? "Analyzing Waste..." : 
-       "Upload Image or Video"}
+       "Detect & Classify Waste"}
     </label>
   );
 };

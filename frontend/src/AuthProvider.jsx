@@ -4,7 +4,7 @@ import { useAuth } from '@clerk/clerk-react';
 import axios from 'axios';
 
 // API base URL - adjust this to match your environment
-const API_BASE_URL ='https://smartwaste-3smg.onrender.com';
+const API_BASE_URL ='http://localhost:5000';
 
 // Configure axios with default headers
 const api = axios.create({

@@ -18,6 +18,7 @@ import Chatbot from './Chatbot';
 import Workeradmin from './workeradmin'; 
 import Workerform from './workerform';
 import Worker from './worker';
+import Review from './review'
 
 function App() {
   const {user} = useUser();
@@ -49,7 +50,9 @@ useEffect(() => {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/workerform" element={<Workerform />} />
         <Route path="/worker" element={<Worker />} />
-         
+        <Route path="/review" element={<Review />} />
+
+      
       </Routes>
       <Chatbot />
 

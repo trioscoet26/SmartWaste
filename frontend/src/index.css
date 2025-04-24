@@ -5,6 +5,7 @@
 .leaflet-container {
     background: #131314;
 }
-body{
-    background-color: #000000;
-}
+body {
+    background-color: #171717; /* Equivalent to Tailwind's bg-neutral-900 */
+  }
+  

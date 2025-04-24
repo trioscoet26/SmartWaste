@@ -281,7 +281,7 @@ const OpenImageVideo = () => {
             };
             
             // Store in database
-            await axios.post(`https://smartwaste-3smg.onrender.com/api/waste/store-waste`, wasteData);
+            await axios.post(`http://localhost:5000/api/waste/store-waste`, wasteData);
             
             // Update status to show location was saved
             if (statusElement && wasteAnalysis.isWaste) {

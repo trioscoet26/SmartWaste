@@ -343,7 +343,6 @@ className="h-96 w-full bg-gray-50 dark:bg-neutral-900 relative overflow-hidden z
             {/* Camera Controls */}
             <div className="grid grid-cols-1 gap-4 w-full">
            
-      <OpenCameraButton />
       
       <OpenImageVideo />
       {/* Capture Photo Button */}

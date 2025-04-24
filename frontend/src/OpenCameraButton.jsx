@@ -61,7 +61,7 @@ const OpenCameraButton = () => {
 
   const storeLocation = async (latitude, longitude) => {
     try {
-      const response = await axios.post(`https://smartwaste-3smg.onrender.com/api/location/store-location`, { latitude, longitude });
+      const response = await axios.post(`http://localhost:5000/api/location/store-location`, { latitude, longitude });
       return response.data;
     } catch (error) {
       console.error("Error storing location:", error);

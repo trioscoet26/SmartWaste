@@ -189,7 +189,7 @@ export default function Map() {
 
   return (
     <div>
-    <section id="map-interface" className="py-16 bg-white dark:bg-neutral-800 ">
+    <section id="map-interface" className="py-16 px-18 bg-white dark:bg-neutral-800 ">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
@@ -295,26 +295,6 @@ export default function Map() {
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
                       This interactive map displays all detected waste locations in real-time. Each marker represents a location where waste has been identified and reported by our community.
                     </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-gray-800 dark:text-white mb-2">Map Legend</h4>
-                    <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3b82f6" className="w-6 h-6">
-                          <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-sm text-gray-700 dark:text-gray-300">Detected Waste Location</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-6 h-6 mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ef4444" className="w-6 h-6">
-                          <path fillRule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-sm text-gray-700 dark:text-gray-300">Critical Waste Area</span>
-                    </div>
                   </div>
                   
                   <div>

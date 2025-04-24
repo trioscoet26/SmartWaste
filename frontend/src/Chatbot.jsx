@@ -5,9 +5,15 @@ const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
+    const API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+    const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
     const handleSend = async () => {
         if (!input.trim()) return;
+        if (!API_KEY) {
+            setMessages((prev) => [...prev, { text: "API key is missing. Please configure the Groq API key.", sender: "bot" }]);
+            return;
+        }
 
         const userMessage = { text: input, sender: "user" };
         setMessages((prev) => [...prev, userMessage]);
@@ -15,30 +21,43 @@ const Chatbot = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(
-                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCr3t8mMUWSrVGYCqQZCZxV41t5-Rm8WYw",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: input }] }]
-                    }),
-                }
-            );
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "llama-3.3-70b-versatile",
+                    messages: [
+                        {
+                            role: "user",
+                            content: input
+                        }
+                    ],
+                    temperature: 0.7
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`API request failed with status ${response.status}`);
+            }
 
             const data = await response.json();
-            console.log("Full API Response:", data);
+            console.log("API Response:", data);
 
-            let botReply = "Sorry, I didn't understand that.";
-
-            if (data?.candidates?.length > 0 && data.candidates[0]?.content?.parts?.length > 0) {
-                botReply = data.candidates[0].content.parts[0].text;
+            let botReply = "Sorry, I couldn't process your request.";
+            if (data?.choices?.[0]?.message?.content) {
+                botReply = data.choices[0].message.content;
             }
 
             setMessages((prev) => [...prev, { text: botReply, sender: "bot" }]);
         } catch (error) {
             console.error("Error fetching response:", error);
-            setMessages((prev) => [...prev, { text: "Error fetching response.", sender: "bot" }]);
+            setMessages((prev) => [...prev, { 
+                text: "Error: " + (error.message || "Failed to get response from AI"), 
+                sender: "bot" 
+            }]);
         } finally {
             setLoading(false);
         }
@@ -125,4 +144,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-

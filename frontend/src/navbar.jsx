@@ -7,8 +7,7 @@ import {
   UserButton,
   useAuth
 } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
-import DemoSignIn from './demosignin'
+import DemoSignIn, { DemoSignInButton } from './demosignin';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,8 +15,6 @@ export default function Navbar() {
   const [lastAttemptedPath, setLastAttemptedPath] = useState("");
   const navigate = useNavigate();
   const { isSignedIn } = useAuth();
-
-
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -38,8 +35,6 @@ export default function Navbar() {
     setShowLoginPopup(false);
   };
 
-
-
   const handleSuccessfulLogin = () => {
     setShowLoginPopup(false);
     if (lastAttemptedPath) {
@@ -53,10 +48,11 @@ export default function Navbar() {
     if (isSignedIn && showLoginPopup) {
       handleSuccessfulLogin();
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, showLoginPopup, lastAttemptedPath]);
 
   return (
     <>
+      
       <header id="header" className="bg-neutral-900 text-white fixed w-full z-50">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
@@ -132,7 +128,9 @@ export default function Navbar() {
                   </button>
                 </li>
                 <li>
-                <DemoSignIn />
+                  <SignedOut>
+                    <DemoSignInButton />
+                  </SignedOut>
                 </li>
               </div>
             </ul>
@@ -177,7 +175,11 @@ export default function Navbar() {
                 <div className="border-t border-gray-200 w-full"></div>
               </div>
               
-             
+              {/* Use the DemoSignInButton in the popup */}
+              <DemoSignInButton 
+                className="w-full py-3" 
+                buttonText="Login as Guest"
+              />
               
             </div>
             

@@ -13,7 +13,7 @@ const AdminLogin = ({ setIsAdmin }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowToast(true);
-    }, 3000);
+    }, 1000);
     setToastTimeout(timeout);
 
     return () => {

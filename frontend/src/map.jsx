@@ -201,7 +201,7 @@ export default function Map() {
         </div>
         
         {/* Main Content Area - Restructured */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8" >
           {/* Map Section with Information - Combined */}
           <div className="bg-white dark:bg-neutral-700 rounded-xl shadow-lg overflow-hidden">
             <div className="bg-gray-200 dark:bg-neutral-600 p-4">

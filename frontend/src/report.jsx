@@ -190,7 +190,7 @@ const MapController = ({ coordinates, setCoordinates, locateMe, resetLocateMe, s
     setLoading(true);
     console.log("Fetching reports with token:", token.substring(0, 10) + "...");
     
-    const response = await axios.get("http://localhost:5000/api/reports/user", {
+    const response = await axios.get("https://smartwaste-backend.onrender.com/api/reports/user", {
       headers: { Authorization: `Bearer ${token}` },
       timeout: 10000 // Set a timeout of 10 seconds
     });
@@ -258,7 +258,7 @@ const handleSubmit = async (e) => {
     const authToken = await getToken();
     
     const response = await axios.post(
-      'http://localhost:5000/api/reports',
+      'https://smartwaste-backend.onrender.com/api/reports',
       formData,
       {
         headers: {
@@ -492,7 +492,7 @@ const acceptedReports = reports.filter(report => report.status === 'accepted').l
     const fetchReports = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/reports/user", {
+        const response = await axios.get("https://smartwaste-backend.onrender.com/api/reports/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

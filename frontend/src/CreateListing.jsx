@@ -37,7 +37,7 @@ const CreateListing = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/listings', formData, {
+      const response = await axios.post('https://smartwaste-backend.onrender.com/api/listings', formData, {
         headers: { 'Content-Type': 'application/json' }
       });
 

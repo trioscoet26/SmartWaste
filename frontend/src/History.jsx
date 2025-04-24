@@ -10,7 +10,7 @@ const History = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expandedUser, setExpandedUser] = useState(null);
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = 'https://smartwaste-backend.onrender.com/api';
 
   useEffect(() => {
     fetchData();
@@ -32,7 +32,7 @@ const History = () => {
       const userDetailsPromises = usersData.map(async (user) => {
         try {
           const clerkResponse = await axios.get(
-            `http://localhost:5000/api/users/${user.clerkId}`, 
+            `https://smartwaste-backend.onrender.com/api/users/${user.clerkId}`, 
             {
               headers: {
                 Authorization: `Bearer ${import.meta.env.CLERK_SECRET_KEY}`,

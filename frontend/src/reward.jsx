@@ -22,11 +22,11 @@ export default function Reward() {
         
         // Fetch reports and purchased items in parallel
         const [reportsResponse, purchasesResponse] = await Promise.all([
-          axios.get("http://localhost:5000/api/reports/user", {
+          axios.get("https://smartwaste-backend.onrender.com/api/reports/user", {
             headers: { Authorization: `Bearer ${token}` },
             timeout: 10000
           }),
-          axios.get("http://localhost:5000/api/listings/purchased", {
+          axios.get("https://smartwaste-backend.onrender.com/api/listings/purchased", {
             headers: { Authorization: `Bearer ${token}` },
             timeout: 10000
           })
@@ -48,7 +48,7 @@ export default function Reward() {
         const netCoins = earnedCoins - spentCoins;
         
         // Update the user's greenCoins in the database
-        await axios.post("http://localhost:5000/api/users/update-coins", 
+        await axios.post("https://smartwaste-backend.onrender.com/api/users/update-coins", 
           { amount: netCoins },
           { 
             headers: { Authorization: `Bearer ${token}` },

@@ -38,7 +38,7 @@ export default function Marketplace() {
 
         // Fetch user data from your backend API using the Clerk ID
         const response = await axios.get(
-          `http://localhost:5000/api/user/profile/${clerkId}`
+          `https://smartwaste-backend.onrender.com/api/user/profile/${clerkId}`
         );
 
         setUserProfile(response.data);
@@ -64,7 +64,7 @@ export default function Marketplace() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/payment/order`,
+        `https://smartwaste-backend.onrender.com/api/payment/order`,
         {
           method: "POST",
           headers: {
@@ -95,7 +95,7 @@ export default function Marketplace() {
         // console.log("response", response)
         try {
           const res = await fetch(
-            `http://localhost:5000/api/payment/verify`,
+            `https://smartwaste-backend.onrender.com/api/payment/verify`,
             {
               method: "POST",
               headers: {
@@ -142,7 +142,7 @@ export default function Marketplace() {
       }
 
       const response = await axios.get(
-        "http://localhost:5000/api/listings",
+        "https://smartwaste-backend.onrender.com/api/listings",
         { params }
       );
 
@@ -234,7 +234,7 @@ export default function Marketplace() {
   //   try {
   //     const token = await getToken();
   //     const response = await axios.patch(
-  //       `http://localhost:5000/api/listings/${listingId}`,
+  //       `https://smartwaste-backend.onrender.com/api/listings/${listingId}`,
   //       { price: parseInt(coins) || 0 },
   //       {
   //         headers: {
@@ -429,7 +429,7 @@ export default function Marketplace() {
       }
 
       const response = await axios.get(
-        "http://localhost:5000/api/listings/purchased",
+        "https://smartwaste-backend.onrender.com/api/listings/purchased",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -488,7 +488,7 @@ export default function Marketplace() {
 
       // Send request to purchase the item and deduct coins
       const response = await axios.post(
-        "http://localhost:5000/api/listings/purchase",
+        "https://smartwaste-backend.onrender.com/api/listings/purchase",
         {
           listingId,
           price: coinsUsed,
@@ -503,7 +503,7 @@ export default function Marketplace() {
       try {
         const token = await getToken();
         const response = await axios.patch(
-          `http://localhost:5000/api/listings/${listingId}`,
+          `https://smartwaste-backend.onrender.com/api/listings/${listingId}`,
           { price: parseInt(coinsUsed) || 0 },
           {
             headers: {

@@ -397,7 +397,8 @@ const OpenImageVideo = () => {
   };
 
   return (
-    <label className={`cursor-pointer ${loading || analyzing ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-600'} text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-105 ${(loading || analyzing) ? 'opacity-75 cursor-not-allowed' : ''}`}>
+    <div className="flex justify-center">
+      <label className={`w-80 cursor-pointer ${loading || analyzing ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-600'} text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-105 ${(loading || analyzing) ? 'opacity-75 cursor-not-allowed' : ''}`}>
       <input
         type="file"
         accept="image/*,video/mp4"
@@ -423,6 +424,7 @@ const OpenImageVideo = () => {
        analyzing ? "Analyzing Waste..." : 
        "Detect & Classify Waste"}
     </label>
+    </div>
   );
 };
 

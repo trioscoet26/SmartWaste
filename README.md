@@ -4,7 +4,7 @@
 An intelligent waste management solution that leverages AI-powered surveillance to detect garbage and spills in real-time. The system automates task allocation to cleanup crews, enables public reporting of waste, and incentivizes community participation through rewards. Our solution utilizes Groq's high-performance AI inference for rapid detection and sentiment analysis, alongside Fluvio for real-time data streaming and processing.
 
 ## Live Demo
-[Access our live demo](https://waste-detection-demo.example.com)
+[Access our live demo](https://smart-waste-virid.vercel.app/)
 
 ## Tech Stack & Services
 

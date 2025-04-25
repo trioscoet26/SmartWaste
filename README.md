@@ -58,14 +58,14 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 
 ### 🤖 Automated Task Management
 - Automatically assigns cleanup jobs to field workers
-- Routes are optimized for time and hazard level
+- RL Modek for Task Assignment
 - Tracks real-time status of each assigned task
 - Measures performance metrics for reporting
 
 ### 📱 Interactive Public Reporting System
 - Mobile-friendly interface for public waste reporting
 - Live map displays hotspots and cleaning updates
-- AI-powered verification to prevent false reports
+- Authority Based verification to prevent false reports
 - Gamified community participation and leaderboard
 
 ### 💬 Sentiment Analysis Pipeline
@@ -96,17 +96,18 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 - Python 3.9+
 - Groq API Key
 - Fluvio Cluster (self-hosted or cloud-based)
+- Twilio API Key
 
 ### 📦 Step 1: Clone the Repository
 ```bash
-git clone https://github.com/yourusername/waste-detection-system.git
-cd waste-detection-system
+git clone https://github.com/trioscoet26/SmartWaste.git
+cd SmartWaste
 ```
 
 ### ⚙️ Step 2: Setup Environment Variables
 ```bash
 cp .env.example .env
-# Update the .env file with Groq API Key and Fluvio configurations
+# Update the .env file with Required Api Keys and configurations
 ```
 
 ### 📥 Step 3: Install Dependencies
@@ -114,11 +115,15 @@ cp .env.example .env
 # Backend
 cd backend
 npm install
-pip install -r requirements.txt
+
 
 # Frontend
-cd ../frontend
+cd frontend
 npm install
+
+# Model
+cd Model
+pip install -r requirements.txt
 ```
 
 ### 🔌 Step 4: Setup Fluvio
@@ -154,18 +159,13 @@ docker-compose up -d
 
 # Or manually
 cd backend && npm start
-cd ../frontend && npm start
-cd ../ml-service && python app.py
+cd frontend && npm start
+cd Model && python app.py
 ```
 
 ### 🌍 Step 7: Launch Application
-Visit `http://localhost:3000` to explore the platform.
+Visit `http://localhost:5173` to explore the platform.
 
 ---
 
-## 🤝 Contributing
-We welcome your ideas, improvements, and bug fixes! See our [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-## 📄 License
-Licensed under the MIT License. See [LICENSE](LICENSE) for more information.
 

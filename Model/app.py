@@ -6,6 +6,7 @@ from datetime import datetime
 import geocoder
 import os
 
+
 # MongoDB connection
 client = MongoClient('mongodb+srv://root:root@cluster0.ik1za.mongodb.net/')
 db = client['SmartWaste']

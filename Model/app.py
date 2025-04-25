@@ -11,6 +11,7 @@ client = MongoClient('mongodb+srv://root:root@cluster0.ik1za.mongodb.net/')
 db = client['SmartWaste']
 collection = db['tasks']
 
+
 # Initialize the Roboflow client
 print("Initializing Roboflow client...")
 rf = Roboflow(api_key="OnGIwp43w9s3C9lPMInc")

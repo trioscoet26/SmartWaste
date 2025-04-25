@@ -35,15 +35,16 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 - **Fluvio:** Stream processing platform for handling real-time data flows
 - **AI-Powered CCTV:** Turns existing camera infrastructure into intelligent detection nodes
 - **React.js & Node.js:** Seamless frontend and backend development
-- **TensorFlow/PyTorch:** For training and deploying AI models
-- **PostgreSQL:** Persistent and structured data storage
+- **PyTorch:** For training and deploying AI models
+- **MongoDB:** Persistent and structured data storage
 
 ### ☁️ Services Used
 - **Groq API:** High-speed inference and NLP capabilities
 - **Fluvio Streaming Platform:** Real-time data pipeline and event processing
-- **Cloud Storage:** Stores image and detection data securely
-- **Authentication Services:** Ensures secure user access and roles
-- **Payment Gateway:** Processes community reward and incentive payouts
+- **MongoDB Atlas Cloud Storage:** Stores image and detection data securely on MongoDB Atlas
+- **Clerk Authentication Services:** Ensures secure user access and roles
+- **Razorpay Payment Gateway:** Processes community reward and incentive payouts
+- **Twilio Notification Service:** Automated Calls and SMS to Notify Cleaning Crew
 
 ---
 
@@ -68,7 +69,7 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 - Gamified community participation and leaderboard
 
 ### 💬 Sentiment Analysis Pipeline
-- Uses Groq NLP and `sentiment` library to process feedback
+- Uses Groq AI  and `sentiment` library to process feedback
 - Analyzes how citizens feel about area cleanliness
 - Detects early signs of dissatisfaction or praise
 - Provides actionable insights to improve services

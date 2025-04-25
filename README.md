@@ -1,6 +1,6 @@
 # AI-Powered Waste & Spill Detection System
 
-## 🚀 Overview
+## Overview
 An intelligent waste management solution that leverages AI-powered surveillance to detect garbage and spills in real time. The system automates task allocation to cleanup crews, enables public reporting of waste, and incentivizes community participation through rewards.
 
 Our solution integrates **Groq's** high-performance AI inference for rapid detection and sentiment analysis, and **Fluvio** for real-time data streaming and processing.
@@ -10,7 +10,7 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 
 ---
 
-## 🛠️ Tech Stack & Services
+##  Tech Stack & Services
 
 ### 🌐 Frontend
 - ![React](https://img.shields.io/badge/-React.js-61DAFB?logo=react&logoColor=white&style=flat-square) React.js  
@@ -30,7 +30,7 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 - ![GROQ SDK](https://img.shields.io/badge/-GROQ%20SDK-FF4685?style=flat-square) GROQ SDK  
 - ![Fluvio](https://img.shields.io/badge/-Fluvio%20Client-FF4C4C?style=flat-square) Fluvio Client  
 
-### 🧩 Core Technologies
+###  Core Technologies
 - **Groq LPU (Language Processing Unit):** Ultra-low latency AI inference for real-time waste detection, classification, and sentiment analysis
 - **Fluvio:** Stream processing platform for handling real-time data flows
 - **AI-Powered CCTV:** Turns existing camera infrastructure into intelligent detection nodes
@@ -38,7 +38,7 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 - **PyTorch:** For training and deploying AI models
 - **MongoDB:** Persistent and structured data storage
 
-### ☁️ Services Used
+### Services Used
 - **Groq API:** High-speed inference and NLP capabilities
 - **Fluvio Streaming Platform:** Real-time data pipeline and event processing
 - **MongoDB Atlas Cloud Storage:** Stores image and detection data securely on MongoDB Atlas
@@ -50,37 +50,37 @@ Our solution integrates **Groq's** high-performance AI inference for rapid detec
 
 ## ✨ Features
 
-### 🗑️ Real-Time Waste Detection & Classification
+###  Real-Time Waste Detection & Classification
 - Detects garbage and spills from CCTV feeds instantly using Groq inference
 - Classifies waste into categories: plastic, organic, liquid, etc.
 - Prioritizes cleanup based on hazard level and location urgency
 - Ultra-low latency streaming using Groq-optimized pipelines
 
-### 🤖 Automated Task Management
+###  Automated Task Management
 - Automatically assigns cleanup jobs to field workers
 - RL Modek for Task Assignment
 - Tracks real-time status of each assigned task
 - Measures performance metrics for reporting
 
-### 📱 Interactive Public Reporting System
+###  Interactive Public Reporting System
 - Mobile-friendly interface for public waste reporting
 - Live map displays hotspots and cleaning updates
 - Authority Based verification to prevent false reports
 - Gamified community participation and leaderboard
 
-### 💬 Sentiment Analysis Pipeline
+###  Sentiment Analysis Pipeline
 - Uses Groq AI  and `sentiment` library to process feedback
 - Analyzes how citizens feel about area cleanliness
 - Detects early signs of dissatisfaction or praise
 - Provides actionable insights to improve services
 
-### 🔄 Real-Time Data Processing with Fluvio
-1. ✍️ **User submits a review** through the frontend
-2. 🚀 **Backend API sends review** to a Fluvio topic
-3. 🧠 **Fluvio consumer triggers** the `sentiment` library to compute score
-4. 🔁 **Frontend receives sentiment score** instantly for live feedback
+### Real-Time Data Processing with Fluvio
+1.  **User submits a review** through the frontend
+2.  **Backend API sends review** to a Fluvio topic
+3.  **Fluvio consumer triggers** the `sentiment` library to compute score
+4.  **Frontend receives sentiment score** instantly for live feedback
 
-### 🎁 Reward System
+###  Reward System
 - Public participation is rewarded with redeemable points
 - AI ensures reports are legitimate before issuing rewards
 - Tracks and celebrates top contributors

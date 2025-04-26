@@ -14,9 +14,6 @@
 
 ## 🎯 Objective
 
-What problem does your project solve, and who does it serve?  
-Briefly describe the real-world use case and the value it provides.
-
 # 🌍 SmartWaste
 
 **SmartWaste** is an **AI-powered platform** that revolutionizes city waste management — making it faster, cleaner, and rewarding **citizen participation**! 🚀

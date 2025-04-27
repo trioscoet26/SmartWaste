@@ -221,9 +221,9 @@ async function assignTasks() {
     }
 
     // First, mark all these tasks as being processed to prevent other instances from assigning them
-    const taskIds = tasks.map(task => task._id);
+    const taskIds = tasks.map(task => taskid);
     await Task.updateMany(
-      { _id: { $in: taskIds }, assigned: false },
+      {id: { $in: taskIds }, assigned: false },
       { $set: { processing: true } },
       { session }
     );
@@ -278,22 +278,22 @@ async function assignTasks() {
         const task = departmentTasks[i];
 
         // Double-check this task hasn't been assigned yet (safety check)
-        const freshTaskCheck = await Task.findOne({ _id: task._id, assigned: false }).session(session);
+        const freshTaskCheck = await Task.findOne({id: taskid, assigned: false }).session(session);
         if (!freshTaskCheck) {
-          console.log(`⚠️ Task ${task._id} already assigned by another process, skipping.`);
+          console.log(`⚠️ Task ${taskid} already assigned by another process, skipping.`);
           continue;
         }
 
         // Double-check worker is still available
-        const freshWorkerCheck = await Worker.findOne({ _id: worker._id, available: true }).session(session);
+        const freshWorkerCheck = await Worker.findOne({id: workerid, available: true }).session(session);
         if (!freshWorkerCheck) {
-          console.log(`⚠️ Worker ${worker.firstName} (${worker._id}) no longer available, skipping.`);
+          console.log(`⚠️ Worker ${worker.firstName} (${workerid}) no longer available, skipping.`);
           continue;
         }
 
         // Update the task and worker in the database
         task.assigned = true;
-        task.assignedWorker = worker._id;
+        task.assignedWorker = workerid;
         task.processing = false;
         await task.save({ session });
 
@@ -301,19 +301,19 @@ async function assignTasks() {
         worker.available = false; // Mark worker as unavailable
         worker.taskLoad = (worker.taskLoad || 0) + 1;
         if (!worker.taskHistory) worker.taskHistory = [];
-        worker.taskHistory.push(task._id);
+        worker.taskHistory.push(taskid);
         await worker.save({ session });
 
-        console.log(`🧹 Assigned Task ${task._id} (${task.department} - ${task.severity}) to ${worker.firstName} (${worker.email}) (${worker.phone}) (${worker._id})`);
+        console.log(`🧹 Assigned Task ${taskid} (${task.department} - ${task.severity}) to ${worker.firstName} (${worker.email}) (${worker.phone}) (${workerid})`);
         
         notificationQueue.push({
           workerPhone: worker.phone,
           worker: {
             firstName: worker.firstName,
-            _id: worker._id.toString()
+           id: workerid.toString()
           },
           task: {
-            _id: task._id.toString(),
+           id: taskid.toString(),
             department: task.department,
             severity: task.severity,
             priority: task.priority,
@@ -339,25 +339,22 @@ async function assignTasks() {
         
         // Log notification results
         if (notificationResults.sms) {
-          console.log(`📱 SMS notification sent successfully (SID: ${notificationResults.sms.sid})`);
+          console.log(`📱 SMS notification sent successfully (SID: ${notificationResults.sms.id})`);
         }
         if (notificationResults.call) {
-          console.log(`📞 Call notification sent successfully (SID: ${notificationResults.call.sid})`);
+          console.log(`📞 Call notification sent successfully (SID: ${notificationResults.call.id})`);
         }
         if (notificationResults.errors.length > 0) {
           console.warn(`⚠️ Some notifications failed for ${notification.worker.firstName}:`, 
             notificationResults.errors.map(e => e.type).join(', '));
         }
       } catch (error) {
-        console.error(`❌ Failed to notify worker ${notification.worker.firstName}:`, error);
-        // Continue with other notifications
       }
     }
     
   } catch (error) {
     // If an error occurs, abort the transaction
     await session.abortTransaction();
-    console.error('❌ Error during task assignment:', error);
   } finally {
     // End the session
     session.endSession();

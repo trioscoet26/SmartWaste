@@ -7,10 +7,6 @@ import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-lea
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-
-
-
-
 export default function Report() {
   
   const { getToken } = useAuth();

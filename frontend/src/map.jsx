@@ -3,16 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import sampleImage from "./sample.png"; // Adjust the path as needed
-import OpenCameraButton from "./OpenCameraButton";
 import OpenImageVideo from "./OpenImageVideo";
-
-// Custom Red Marker Icon
-const redIcon = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/1673/1673221.png",
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-  popupAnchor: [0, -35],
-});
 
 // Blue Marker Icon for detected locations
 const blueIcon = new L.Icon({

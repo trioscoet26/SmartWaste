@@ -44,7 +44,7 @@ const ApproveReport = () => {
   const handleStatusChange = async (reportId, currentStatus) => {
     const newStatus = currentStatus === "pending" ? "accepted" : "pending";
     try {
-      const response = await fetch(`${API_URL}/reports/${reportId}/${newStatus}`, {
+      const response = await fetch(`${API_URL}reports/${reportId}/${newStatus}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),

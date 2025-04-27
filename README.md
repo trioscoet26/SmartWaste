@@ -203,7 +203,7 @@
 
 - **Live Project Link:** Click [here](https://smart-waste-virid.vercel.app/)  
 - **Demo Video Link:** Click [here](https://youtu.be/tn5CkDzKuJQ)  
-- **PPT Link:** Click [here](https://drive.google.com/file/d/197mt6EF0J_RaS9zMDTylIg3bsZNA2rqn/view?usp=sharing)
+- **PPT Link:** Click [here](https://drive.google.com/file/d/1scpw67MmcWr_XaIRSQAdzygr-1fpYH4P/view?usp=sharing)
 
 ---
 ## ✅ Tasks & Bonus Checklist

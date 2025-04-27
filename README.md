@@ -1,171 +1,369 @@
-# AI-Powered Waste & Spill Detection System
+![github-submission-banner](https://github.com/user-attachments/assets/a1493b84-e4e2-456e-a791-ce35ee2bcf2f)
 
-## Overview
-An intelligent waste management solution that leverages AI-powered surveillance to detect garbage and spills in real time. The system automates task allocation to cleanup crews, enables public reporting of waste, and incentivizes community participation through rewards.
+# 🚀 Project Title
 
-Our solution integrates **Groq's** high-performance AI inference for rapid detection and sentiment analysis, and **Fluvio** for real-time data streaming and processing.
-
-## 🔗 Live Demo
-👉 [Click here to view our live demo](https://smart-waste-virid.vercel.app/)
+## AI Powered Garbage and Spill Detection with automated task allocation to Cleaning Crew
 
 ---
 
-##  Tech Stack & Services
+## 📌 Problem Statement
 
-### 🌐 Frontend
-- ![React](https://img.shields.io/badge/-React.js-61DAFB?logo=react&logoColor=white&style=flat-square) React.js  
-- ![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white&style=flat-square) Tailwind CSS  
-- ![React Charts](https://img.shields.io/badge/-React%20Charts-FF6F61?logo=chartdotjs&logoColor=white&style=flat-square) React Charts  
-
-### 🧠 Backend
-- ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat-square) Node.js  
-- ![Express.js](https://img.shields.io/badge/-Express.js-000000?logo=express&logoColor=white&style=flat-square) Express.js  
-
-### 💾 Database
-- ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white&style=flat-square) MongoDB  
-- ![MongoDB Atlas](https://img.shields.io/badge/-MongoDB%20Atlas-11B48A?logo=mongodb&logoColor=white&style=flat-square) MongoDB Atlas (Cloud)  
-
-### 🔌 Services
-- ![GROQ](https://img.shields.io/badge/-GROQ%20API-FF4685?style=flat-square) GROQ API  
-- ![GROQ SDK](https://img.shields.io/badge/-GROQ%20SDK-FF4685?style=flat-square) GROQ SDK  
-- ![Fluvio](https://img.shields.io/badge/-Fluvio%20Client-FF4C4C?style=flat-square) Fluvio Client  
-
-###  Core Technologies
-- **Groq LPU (Language Processing Unit):** Ultra-low latency AI inference for real-time waste detection, classification, and sentiment analysis
-- **Fluvio:** Stream processing platform for handling real-time data flows
-- **AI-Powered CCTV:** Turns existing camera infrastructure into intelligent detection nodes
-- **React.js & Node.js:** Seamless frontend and backend development
-- **PyTorch:** For training and deploying AI models
-- **MongoDB:** Persistent and structured data storage
-
-### Services Used
-- **Groq API:** High-speed inference and NLP capabilities
-- **Fluvio Streaming Platform:** Real-time data pipeline and event processing
-- **MongoDB Atlas Cloud Storage:** Stores image and detection data securely on MongoDB Atlas
-- **Clerk Authentication Services:** Ensures secure user access and roles
-- **Razorpay Payment Gateway:** Processes community reward and incentive payouts
-- **Twilio Notification Service:** Automated Calls and SMS to Notify Cleaning Crew
+**Develop a facility monitoring system using AI-powered CCTV cameras to detect spills, garbage, and maintenance issues, automatically assigning tasks to the cleaning crew.**
 
 ---
 
-## ✨ Features
+## 🎯 Objective
 
-###  Real-Time Waste Detection & Classification
-- Detects garbage and spills from CCTV feeds instantly using Groq inference
-- Classifies waste into categories: plastic, organic, liquid, etc.
-- Prioritizes cleanup based on hazard level and location urgency
-- Ultra-low latency streaming using Groq-optimized pipelines
+#  SmartWaste
 
-###  Automated Task Management
-- Automatically assigns cleanup jobs to field workers
-- RL Modek for Task Assignment
-- Tracks real-time status of each assigned task
-- Measures performance metrics for reporting
-
-###  Interactive Public Reporting System
-- Mobile-friendly interface for public waste reporting
-- Live map displays hotspots and cleaning updates
-- Authority Based verification to prevent false reports
-- Gamified community participation and leaderboard
-
-###  Sentiment Analysis Pipeline
-- Uses Groq AI  and `sentiment` library to process feedback
-- Analyzes how citizens feel about area cleanliness
-- Detects early signs of dissatisfaction or praise
-- Provides actionable insights to improve services
-
-### Real-Time Data Processing with Fluvio
-1.  **User submits a review** through the frontend
-2.  **Backend API sends review** to a Fluvio topic
-3.  **Fluvio consumer triggers** the `sentiment` library to compute score
-4.  **Frontend receives sentiment score** instantly for live feedback
-
-###  Reward System
-- Public participation is rewarded with redeemable points
-- AI ensures reports are legitimate before issuing rewards
-- Tracks and celebrates top contributors
-- Community challenges to increase civic engagement
+**SmartWaste** is an **AI-powered platform** that revolutionizes city waste management — making it faster, cleaner, and rewarding **citizen participation**! 🚀
 
 ---
 
-## 🧰 Installation Instructions
+## 🛠️ Problems Solved
+- Absence of AI-Based Real-Time Waste Monitoring
+- Slow detection of waste in large cities
+- Manual task assignment to cleanup crews
+- Lack of Sentiment Analysis in Waste Management Systems
+- Lack of Waste Reporting and Reward System
+- Low community involvement causing delays and poor hygiene
+- Shortage of recyclable raw materials for industries
+- Chatbot Support for Public Queries and Waste Information
 
-### 📋 Prerequisites
+---
+
+## 🎯 Target Beneficiaries
+- General Community
+- City Municipal Corporations
+- Local Cleanup Contractors
+- Recycling Industry Owners
+- Organic Fertilizer Industries
+- Green Product SMEs
+- Everyone working towards sustainable waste management
+
+---
+
+## 🌟 Real-World Use Cases
+
+- 🎥 **AI-Powered Garbage Detection**  
+  ➔ Using **Groq AI**, SmartWaste scans city cameras to **detect garbage and spills in real-time**!
+
+- 🤖 **Smart Chatbot for Citizen Reporting**  
+  ➔ A friendly **Groq-powered chatbot** lets citizens **report waste issues** instantly.
+
+- 📈 **Sentiment Analysis for Prioritization**  
+  ➔ **Fluvio + Groq** analyze citizen reports to **rank and prioritize urgent issues**!
+
+- 📬 **Automated Cleaning Task Assignment**  
+  ➔ **SmartWaste auto-assigns tasks** to cleaning crews, speeding up the workflow.
+
+- 🗺️ **One-Tap Trash Reporting + Rewards**  
+  ➔ Citizens **report trash** on an interactive city map & **earn rewards** for participating.
+
+- 🤝 **Seamless Real-Time Coordination**  
+  ➔ Instantly **connects citizens, cleanup crews, and facility managers** for better teamwork.
+
+---
+
+## 🎁 Value to Society
+
+- Faster waste detection & cleanup  
+- Time-saving automated task management  
+- Boosted citizen engagement with easy reporting and rewards  
+- Improved communication across all stakeholders
+- Motivation for People Using Green Coins
+- Exclusive Access to Eco-Friendly Products
+- Support for a Circular Economy
+
+
+---
+
+> **SmartWaste** — Because a cleaner city is a smarter city! 🏙️♻️
+
+---
+
+## 🧠 Team & Approach
+
+### Team Name:  
+ `DevSquadTrio`
+
+## 👨‍💻 Team Members
+
+- **Mithilesh Watane**  
+
+  [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?logo=github&style=flat-square)](https://github.com/MithileshWatane)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/mithilesh-watane/)  
+  🛠️ Role: Developer
+
+- **Omkar Shelke**  
+
+  [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?logo=github&style=flat-square)](https://github.com/shelkeom230)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/omkar2005/)  
+  🛠️ Role: Developer
+
+- **Vivek Gazalwar**  
+
+  [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?logo=github&style=flat-square)](https://github.com/09viv)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/vivek-gazalwar-02074924b/)  
+  🛠️ Role: Developer
+
+### Your Approach:  
+## 🚀 Why We Chose This Problem Statement
+
+- 🏙️ **Urban waste is a major challenge** — Large cities face daily garbage overflow and slow cleanup processes.
+- ⚡ **Manual waste detection is slow** — Current systems rely heavily on human observation, causing delays.
+- 🛠️ **Crew management is inefficient** — Task assignment is often manual and leads to longer response times.
+- 🧹 **Low community participation** — Citizens are rarely motivated to report waste problems.
+- 🌱 **Resource wastage** — Recyclable materials often end up in landfills due to poor waste tracking.
+- 🎁 **Rewarding citizens with GreenCoins** — Boosts public participation by offering discounts in a sustainable marketplace.
+- ♻️ **Promotes a circular economy** — Encourages recycling, reduces waste, and supports green businesses.
+ 
+## ⚡ Key Challenges We Faced
+
+### Accuracy in Garbage and Spill Detection
+- **Problem**: Difficult to detect garbage and spills accurately from CCTV footage. Backgrounds often confused the model.
+- **Solution**: Expanded the dataset with diverse samples and fine-tuned model parameters for better results in different conditions.
+
+### Automating Task Allocation
+- **Problem**: Standard logic couldn't handle real-time task assignments in unpredictable city environments.
+- **Solution**: Developed a dynamic system that assigns tasks based on location, urgency, and crew availability.
+
+---
+
+## Other Challenges We Overcame
+
+### Approving Citizen Reports by Checking Authenticity
+- **Problem**: Some citizen reports were false or irrelevant, wasting resources.
+- **Solution**: Built an approval machanisms for officers and officers to approve only genuine and trustworty reports.
+
+### Real-Time Data Streaming and Processing
+- **Problem**: Handling massive real-time data from cameras and citizen apps without system lag.
+- **Solution**: Integrated Fluvio and Groq AI to stream and process data quickly and reliably.
+
+### Designing the Reward System (GreenCoins)
+- **Problem**: Needed a fair system to reward genuine participation without abuse.
+- **Solution**: Implemented GreenCoins with checks to prevent spamming and encourage real, useful reports.
+
+---
+
+## 🛠️ Tech Stack
+
+### 🚀 Core Technologies Used:
+
+- **Frontend**:  
+  [![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev/)  
+  [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)  
+  [![React Charts](https://img.shields.io/badge/React_Charts-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react-chartjs-2.js.org/)
+
+- **Backend**:  
+  [![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)  
+  [![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)  
+  [![Fluvio](https://img.shields.io/badge/Fluvio-FF6B81?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxOCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMjAiIGZpbGw9IiMwMDhDQ0YiLz48L3N2Zz4=&style=flat-square)](https://www.fluvio.io/)  
+  [![Groq](https://img.shields.io/badge/Groq_AI-FF6B81?style=flat-square&logo=groq&logoColor=white)](https://groq.com/)
+
+- **Database**:  
+  [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+
+- **APIs**:  
+  [![Groq API](https://img.shields.io/badge/Groq_API-FF6B81?style=flat-square&logo=groq&logoColor=white)](https://groq.com/)
+
+- **Hosting**:  
+  [![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white)](https://render.com/) (Backend)  
+  [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/) (Frontend)
+
+
+### Sponsor Technologies Used (if any):
+- [✅] **Groq:** 
+- We used Groq SDK for waste detection and classification using images 
+- we used Groq API to build a chatbot which can answer any query of Users
+- [ ] **Monad:** _Your blockchain implementation_  
+- [✅] **Fluvio:** 
+- We used Fluvio to perform sentiment analysis on user reveiws about our overall application 
+- We passed the user reveiw text to Fluvio cluster 
+- Fluvio clsuter calls npm sentiment library which gives setiment score as per text 
+- Overall sentiment analysis is dispalyed on frontend 
+
+- [ ] **Base:** _AgentKit / OnchainKit / Smart Wallet usage_  
+- [ ] **Screenpipe:** _Screen-based analytics or workflows_  
+- [ ] **Stellar:** _Payments, identity, or token usage_
+*(Mark with ✅ if completed)*
+---
+
+## ✨ Key Features
+
+- ✅ AI Powered Real Time Waste Detection using Groq
+- ✅ Interactive AI powered chatbot to answer user queries   
+- ✅ Report Reward System which rewards users for reporting genuine Waste  
+- ✅ Automated Cleanup Crew Task Assignment 
+- ✅ Admin dashboard to track everything 
+
+---
+
+## 📽️ Demo & Deliverables
+
+- **Live Project Link:** Click [here](https://smart-waste-virid.vercel.app/)  
+- **Demo Video Link:** Click [here](https://youtu.be/tn5CkDzKuJQ)  
+- **PPT Link:** Click [here](https://drive.google.com/file/d/1scpw67MmcWr_XaIRSQAdzygr-1fpYH4P/view?usp=sharing)
+
+---
+## ✅ Tasks & Bonus Checklist
+
+- [✅]**Mandatory Task:** All team members followed at least 2 social channels and filled the form 📋
+- [✅]**Bonus Task 1 (2 Points):** Shared badges and filled the form 🏅
+- [✅]**Bonus Task 2 (3 Points):** Signed up for Sprint.dev and filled the form 🚀
+
+---
+
+## 🧪 How to Run the Project
+
+### Requirements:
 - Node.js (v16+)
 - Docker & Docker Compose
 - Python 3.9+
-- Groq API Key
+- Groq API Key & Groq SDK
 - Fluvio Cluster (self-hosted or cloud-based)
-- Twilio API Key
+# SmartWaste Local Setup Guide 🌟
 
-### 📦 Step 1: Clone the Repository
+Welcome to the SmartWaste project! Follow these quick steps to set up the project locally. 🚀
+
+---
+
+## 🔹 Step 1: Clone the Repository
 ```bash
-git clone https://github.com/trioscoet26/SmartWaste.git
-cd SmartWaste
+https://github.com/trioscoet26/SmartWaste.git
 ```
 
-### ⚙️ Step 2: Setup Environment Variables
+---
+
+## 🔹 Step 2: Configure Frontend Environment
 ```bash
-cp .env.example .env
-# Update the .env file with Required Api Keys and configurations
+cd frontend
+```
+Update your `.env` file:
+```bash
+VITE_API_URL=http://localhost:8000/api/
 ```
 
-### 📥 Step 3: Install Dependencies
+---
+
+## 🔹 Step 3: Install Dependencies
 ```bash
-# Backend
-cd backend
-npm install
-
-
 # Frontend
 cd frontend
-npm install
+npm install --force
+
+# Backend
+cd ../backend
+npm install --force
 
 # Model
-cd Model
+cd ../Model
 pip install -r requirements.txt
 ```
 
-### 🔌 Step 4: Setup Fluvio
+---
+
+## 🛀 Step 4: Setup Fluvio (for data streaming)
 ```bash
 # Install Fluvio CLI
-download and run:
 curl -fsS https://packages.fluvio.io/v1/install.sh | bash
 
-# Start cluster (if local)
+# Start local Fluvio cluster
 fluvio cluster start
 
-# Create required topics
+# Create topics
 fluvio topic create waste-detections
 fluvio topic create cleanup-tasks
 fluvio topic create user-reports
 fluvio topic create sentiment-analysis
 ```
 
-### 🤖 Step 5: Configure Groq Integration
+---
+
+## 🤖 Step 5: Configure Groq Integration
 ```bash
-# Export API key
-env variable:
+# Export your API key
 export GROQ_API_KEY=your_api_key_here
 
 # Test API connectivity
 python scripts/test_groq_connection.py
 ```
 
-### 🔄 Step 6: Start the Services
+---
+
+## 🔄 Step 6: Start the Services
 ```bash
-# Using Docker Compose
-docker-compose up -d
-
-# Or manually
+# Backend
 cd backend && npm start
-cd frontend && npm start
-cd Model && python app.py
-```
 
-### 🌍 Step 7: Launch Application
-Visit `http://localhost:5173` to explore the platform.
+# Frontend
+cd ../frontend && npm start
+
+# Model
+cd ../Model && python app.py
+```
+> 🚫 Ensure port **5000** is free before starting backend!
 
 ---
 
+## 🌐 Step 7: Launch Development Server
+```bash
+npm run dev
+```
 
+---
+
+## 🌟 You're all set!
+Happy coding! 🚀
+
+---
+
+> Need help? Open an issue or start a discussion in the [GitHub Repository](https://github.com/trioscoet26/SmartWaste/issues).
+
+---
+
+# 🔬 Future Scope
+
+- 🌱 Dynamic GreenCoins rewards
+
+- 🛠️ Worker reporting & task tracking
+
+- 🛒 Marketplace upgrades 
+
+- 🏢 Recycling portal for industry owners
+
+# 📂 Resources / Credits
+
+## 👉 APIs Used
+
+- 🔗 Groq API + SDK
+
+- 🔗 Fluvio Client
+
+- 🔗 Leaflet Maps API
+
+## 👉 Libraries & Tools
+
+- 🔗 React.js
+
+- 🔗 Node.js + Express.js
+
+- 🔗 MongoDB
+
+- 🔗 react-charts
+
+- 🔗 npm sentiment, fluvio-client
+---
+
+## 🏁 Final Words
+
+## 🚀 Journey of Team DevSquadTrio Building SmartWaste
+
+- 🎯 Finalized the problem statement
+- 🛠️ Kickstarted frontend development, then backend
+- 🔌 Integrated Groq API & SDK
+- 🌐 Connected Fluvio service for real-time sentiment analysis
+- ✨ Built and polished additional exciting features
+- 🚀 Deployed frontend on **Vercel** and backend on **Render**
+
+---

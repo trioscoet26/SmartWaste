@@ -14,28 +14,28 @@
 
 ## 🎯 Objective
 
-# 🌍 SmartWaste
+#  SmartWaste
 
 **SmartWaste** is an **AI-powered platform** that revolutionizes city waste management — making it faster, cleaner, and rewarding **citizen participation**! 🚀
 
 ---
 
 ## 🛠️ Problems Solved
-- 🐌 Slow detection of waste in large cities
-- ✋ Manual task assignment to cleanup crews
-- 🚫 Low community involvement causing delays and poor hygiene
-- 🏭 Shortage of recyclable raw materials for industries
+- Slow detection of waste in large cities
+- Manual task assignment to cleanup crews
+- Low community involvement causing delays and poor hygiene
+- Shortage of recyclable raw materials for industries
 
 ---
 
 ## 🎯 Target Beneficiaries
-- 👥 General Community
-- 🏢 City Municipal Corporations
-- 🧹 Local Cleanup Contractors
-- 🔄 Recycling Industry Owners
-- 🌱 Organic Fertilizer Industries
-- 🛒 Green Product SMEs
-- 🌟 Everyone working towards sustainable waste management
+- General Community
+- City Municipal Corporations
+- Local Cleanup Contractors
+- Recycling Industry Owners
+- Organic Fertilizer Industries
+- Green Product SMEs
+- Everyone working towards sustainable waste management
 
 ---
 
@@ -63,10 +63,10 @@
 
 ## 🎁 Value to Society
 
-- ✨ Faster waste detection & cleanup  
-- 🕒 Time-saving automated task management  
-- 🙌 Boosted citizen engagement with easy reporting and rewards  
-- 🗣️ Improved communication across all stakeholders
+- Faster waste detection & cleanup  
+- Time-saving automated task management  
+- Boosted citizen engagement with easy reporting and rewards  
+- Improved communication across all stakeholders
 
 ---
 
@@ -112,27 +112,27 @@
  
 ## ⚡ Key Challenges We Faced
 
-### 🎯 Accuracy in Garbage and Spill Detection
+### Accuracy in Garbage and Spill Detection
 - **Problem**: Difficult to detect garbage and spills accurately from CCTV footage. Backgrounds often confused the model.
 - **Solution**: Expanded the dataset with diverse samples and fine-tuned model parameters for better results in different conditions.
 
-### 🚀 Automating Task Allocation
+### Automating Task Allocation
 - **Problem**: Standard logic couldn't handle real-time task assignments in unpredictable city environments.
 - **Solution**: Developed a dynamic system that assigns tasks based on location, urgency, and crew availability.
 
 ---
 
-## 🧠 Other Challenges We Overcame
+## Other Challenges We Overcame
 
-### 🔍 Approving Citizen Reports by Checking Authenticity
+### Approving Citizen Reports by Checking Authenticity
 - **Problem**: Some citizen reports were false or irrelevant, wasting resources.
 - **Solution**: Built an approval machanisms for officers and officers to approve only genuine and trustworty reports.
 
-### 📡 Real-Time Data Streaming and Processing
+### Real-Time Data Streaming and Processing
 - **Problem**: Handling massive real-time data from cameras and citizen apps without system lag.
 - **Solution**: Integrated Fluvio and Groq AI to stream and process data quickly and reliably.
 
-### 🎁 Designing the Reward System (GreenCoins)
+### Designing the Reward System (GreenCoins)
 - **Problem**: Needed a fair system to reward genuine participation without abuse.
 - **Solution**: Implemented GreenCoins with checks to prevent spamming and encourage real, useful reports.
 
@@ -196,16 +196,16 @@
 
 ## 📽️ Demo & Deliverables
 
+- **Live Project Link:** Click [here](https://smart-waste-virid.vercel.app/)  
 - **Demo Video Link:** Click [here](https://youtu.be/tn5CkDzKuJQ)  
 - **PPT Link:** Click [here](https://drive.google.com/file/d/197mt6EF0J_RaS9zMDTylIg3bsZNA2rqn/view?usp=sharing)
-  
 
 ---
 ## ✅ Tasks & Bonus Checklist
 
-- [] **Mandatory Task:** All team members followed at least 2 social channels and filled the form 📋
-- [] **Bonus Task 1 (2 Points):** Shared badges and filled the form 🏅
-- [] **Bonus Task 2 (3 Points):** Signed up for Sprint.dev and filled the form 🚀
+- **Mandatory Task:** All team members followed at least 2 social channels and filled the form 📋
+- **Bonus Task 1 (2 Points):** Shared badges and filled the form 🏅
+- **Bonus Task 2 (3 Points):** Signed up for Sprint.dev and filled the form 🚀
 
 ---
 
@@ -323,7 +323,7 @@ Happy coding! 🚀
 
 - 🛠️ Worker reporting & task tracking
 
-- 🛒 Marketplace upgrades + Payment gateway
+- 🛒 Marketplace upgrades 
 
 - 🏢 Recycling portal for industry owners
 

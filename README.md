@@ -2,13 +2,13 @@
 
 # 🚀 Project Title
 
-## AI Powered garbage and spill detection with automated task allocation to crew
+## AI Powered Garbage and Spill Detection with automated task allocation to Cleaning Crew
 
 ---
 
 ## 📌 Problem Statement
 
-**To be added here**
+**Develop a facility monitoring system using AI-powered CCTV cameras to detect spills, garbage, and maintenance issues, automatically assigning tasks to the cleaning crew.**
 
 ---
 
@@ -168,11 +168,11 @@
 
 
 ### Sponsor Technologies Used (if any):
-- [ ] **Groq:** 
+- [✅] **Groq:** 
 - We used Groq SDK for waste detection and classification using images 
 - we used Groq API to build a chatbot which can answer any query of Users
 - [ ] **Monad:** _Your blockchain implementation_  
-- [ ] **Fluvio:** 
+- [✅] **Fluvio:** 
 - We used Fluvio to perform sentiment analysis on user reveiws about our overall application 
 - We passed the user reveiw text to Fluvio cluster 
 - Fluvio clsuter calls npm sentiment library which gives setiment score as per text 
@@ -196,7 +196,7 @@
 
 ## 📽️ Demo & Deliverables
 
-- **Demo Video Link:** Click [here](https://youtube.com/)  
+- **Demo Video Link:** Click [here](https://youtu.be/tn5CkDzKuJQ)  
 - **PPT Link:** Click [here](https://drive.google.com/file/d/197mt6EF0J_RaS9zMDTylIg3bsZNA2rqn/view?usp=sharing)
   
 
@@ -297,7 +297,7 @@ cd ../frontend && npm start
 # Model
 cd ../Model && python app.py
 ```
-> 🚫 Ensure port **8000** is free before starting backend!
+> 🚫 Ensure port **5000** is free before starting backend!
 
 ---
 

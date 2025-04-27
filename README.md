@@ -21,10 +21,14 @@
 ---
 
 ## 🛠️ Problems Solved
+- Absence of AI-Based Real-Time Waste Monitoring
 - Slow detection of waste in large cities
 - Manual task assignment to cleanup crews
+- Lack of Sentiment Analysis in Waste Management Systems
+- Lack of Waste Reporting and Reward System
 - Low community involvement causing delays and poor hygiene
 - Shortage of recyclable raw materials for industries
+- Chatbot Support for Public Queries and Waste Information
 
 ---
 
@@ -67,6 +71,10 @@
 - Time-saving automated task management  
 - Boosted citizen engagement with easy reporting and rewards  
 - Improved communication across all stakeholders
+- Motivation for People Using Green Coins
+- Exclusive Access to Eco-Friendly Products
+- Support for a Circular Economy
+
 
 ---
 
@@ -136,9 +144,6 @@
 - **Problem**: Needed a fair system to reward genuine participation without abuse.
 - **Solution**: Implemented GreenCoins with checks to prevent spamming and encourage real, useful reports.
 
-
-- Any pivots, brainstorms, or breakthroughs during hacking  
--  To be written here
 ---
 
 ## 🛠️ Tech Stack
@@ -203,9 +208,9 @@
 ---
 ## ✅ Tasks & Bonus Checklist
 
-- **Mandatory Task:** All team members followed at least 2 social channels and filled the form 📋
-- **Bonus Task 1 (2 Points):** Shared badges and filled the form 🏅
-- **Bonus Task 2 (3 Points):** Signed up for Sprint.dev and filled the form 🚀
+- [✅]**Mandatory Task:** All team members followed at least 2 social channels and filled the form 📋
+- [✅]**Bonus Task 1 (2 Points):** Shared badges and filled the form 🏅
+- [✅]**Bonus Task 2 (3 Points):** Signed up for Sprint.dev and filled the form 🚀
 
 ---
 
